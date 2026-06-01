@@ -1,0 +1,45 @@
+<?php
+
+return[
+    'get_start'         => 'Get Start',
+    'read_more'         => 'Read More',
+    'view_all'          => 'View All',
+    'home'              => 'Home',
+    'about'             => 'About',
+    'about_us'          => 'About Us',
+    'services'          => 'Services',
+    'contact'           => 'Contact',
+    'contact_us'        => 'Contact Us',
+    'languages'         => 'Languages',
+    'address'           => 'Address',
+    'call_us'           => 'Call Us',
+    'email_us'          => 'Email Us',
+    'open_hours'        => 'Open Hours',
+    'address'           => 'Address',
+    'phone'             => 'Phone',
+    'email'             => 'Email',
+    'term_services'     => 'Terms of service',
+    'privacy_policy'    => 'Privacy policy',
+    'useful_links'      => 'Useful Links',
+    'our_services'      => 'Our Services',
+    'copyright'         => 'Copyright',
+    'designed_by'       => 'Designed by',
+    'all_right_reserved'=> 'All Rights Reserved',
+    'your_name'         => 'Your Name',
+    'your_email'         => 'Your Email',
+    'subject'           => 'Subject',
+    'message'           => 'Message',
+    'send_message'      => 'Send Message',
+    'blog'              => 'Blog',
+    'blog_single'       => 'Blog Single',
+    'subscribe'         => 'Subscribe',
+    'menus'             => 'Menus',
+    'all'               => 'All',
+    'portfolio'         => 'Portfolio',
+    'Recent_posts'      => 'Recent Posts',
+    'contact'               => 'Contact US',
+];
+
+
+
+
