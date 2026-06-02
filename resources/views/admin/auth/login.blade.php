@@ -29,12 +29,12 @@
             <div class="">
                 <div class="row g-0">
                     <div class="col-12 col-xl-7 col-xxl-8 auth-cover-left align-items-center justify-content-center d-none d-xl-flex" 
-                        style="background-image: url( {{ @$adminLoginTheme->background ? getImage(@$adminLoginTheme->background) : admin_path('images/logos/login_charity.jpg') }} ); background-repeat: no-repeat;">
+                        style="">
                     <div class="card shadow-none bg-transparent shadow-none rounded-0 mb-0">
                             <div class="card-body">
 
-                                {{-- <img src="{{ @$adminLoginTheme->background != null ? getImage(@$adminLoginTheme->background) : admin_path('images/login-images/login-cover.svg') }}" class="img-fluid auth-img-cover-login" width="650" alt="" /> --}}
-                                {{-- <img src="{{ admin_path('images/login-images/login-cover.svg') }}" class="img-fluid auth-img-cover-login" width="650" alt=""/> --}}
+                                <img src="{{ @$adminLoginTheme->background != null ? getImage(@$adminLoginTheme->background) : admin_path('images/login-images/login-cover.svg') }}" class="img-fluid auth-img-cover-login" width="100%" alt="" />
+                                <img src="{{ admin_path('images/login-images/login-cover.svg') }}" class="img-fluid auth-img-cover-login" width="650" alt=""/>
                             </div>
                         </div>
                     </div>
