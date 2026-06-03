@@ -32,12 +32,12 @@ class Index extends Component
 
     protected $listeners = ['updateSellected', 'updateSession', 'updateDeleteId'];
 
-    
+
 
     // delete selected item -------------------------------------------
     public function delete()
     {
-        $items = CharityProject::with(['trans', 'category' ,'category.trans'])->findOrFail($this->deleteId);
+        $items = CharityProject::with(['trans', 'category', 'category.trans'])->findOrFail($this->deleteId);
         $this->delete_file($items->cover_image);
         $this->delete_file($items->background_image);
         $items->tags()->detach();
@@ -84,10 +84,10 @@ class Index extends Component
 
     public function deleteSelected()
     {
-        $items = CharityProject::with(['trans', 'category' ,'category.trans'])->findOrFail($this->mySelected);
+        $items = CharityProject::with(['trans', 'category', 'category.trans'])->findOrFail($this->mySelected);
         foreach ($items as $item) {
             $this->delete_file($item->cover_image);
-            $this->delete_file($item->background_image);            
+            $this->delete_file($item->background_image);
             $item->forceDelete();
             $item->tags()->detach();
             $item->payment()->detach();
@@ -128,8 +128,9 @@ class Index extends Component
         $this->deleteId = $id;
     }
 
-    public function mount(){
-        
+    public function mount()
+    {
+
         $this->categories = CategoryProjects::with('trans')->normal()->orderBy('created_at', 'DESC')->get();
     }
 
@@ -137,16 +138,19 @@ class Index extends Component
     public function render()
     {
 
-        $query = CharityProject::with(['trans', 'category' ,'category.trans'])->normal()->orderBy('created_at', 'DESC');
-        
+        $query = CharityProject::with([
+            'trans',
+            'category.trans',
+            'categories.trans',
+        ])->normal()->orderBy('created_at', 'DESC');
         // dd($this->category_search);
         if ($this->search_title  != '') {
-            $query = $query->whereHas('trans', function($q) {
+            $query = $query->whereHas('trans', function ($q) {
                 $q->where('title', 'like', '%' . $this->search_title . '%');
             });
             $this->resetPage();
         }
-        
+
         if ($this->search_price_from  != '') {
             $query = $query->where('target_price', '>=',  $this->search_price_from);
             $this->resetPage();
@@ -175,16 +179,19 @@ class Index extends Component
             $query = $query->where('hidden', $this->search_hidden);
             $this->resetPage();
         }
-        if ($this->category_search  != "" ){
-            $query = $query->where('category_id', $this->category_search);
+        if ($this->category_search != "") {
+            $query = $query->whereHas('categories', function ($q) {
+                $q->where('category_projects.id', $this->category_search);
+            });
+
             $this->resetPage();
         }
-        if ($this->search_location_type  != "" ){
+        if ($this->search_location_type  != "") {
             $query = $query->where('location_type', $this->search_location_type);
             $this->resetPage();
         }
 
-        $this->items = $query->paginate(pagination_count());     
+        $this->items = $query->paginate(pagination_count());
         $links = $this->items;
         $this->items = collect($this->items->items());
         $items = $this->items;

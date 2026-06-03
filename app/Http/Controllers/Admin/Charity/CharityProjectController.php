@@ -64,13 +64,22 @@ class CharityProjectController extends Controller
             // Save donation_type
             $data['donation_type'] = ProjectType($data);
 
+            // Normalize categories
+            $categoryIds = (array) $request->input('categories', []);
+            $categoryIds = array_values(array_filter($categoryIds));
+
+            // Save main category_id
+            if (!empty($categoryIds)) {
+                $data['category_id'] = $categoryIds[0];
+            }
+
             $charity_project = CharityProject::create($data);
 
-            $this->saveModelTranslation($charity_project, $data); // save or update data
+            $this->saveModelTranslation($charity_project, $data);
 
             // insert to table charity_project_categories
-            if (request()->categories != null) {
-                $charity_project->categories()->attach(request()->categories);
+            if (!empty($categoryIds)) {
+                $charity_project->categories()->attach($categoryIds);
             }
             // insert to table charity_project_tags
             if (request()->tags != null) {
@@ -147,12 +156,22 @@ class CharityProjectController extends Controller
             // Save donation_type
             $data['donation_type'] = ProjectType($data);
 
+            // Normalize categories
+            $categoryIds = (array) $request->input('categories', []);
+            $categoryIds = array_values(array_filter($categoryIds));
+
+            // Save main category_id
+            if (!empty($categoryIds)) {
+                $data['category_id'] = $categoryIds[0];
+            }
+
             $items->update($data);
 
-            $this->saveModelTranslation($items, $data); // save or update data
+            $this->saveModelTranslation($items, $data);
+
             // insert to table charity_project_categories
-            if (request()->categories != null) {
-                $items->categories()->sync(request()->categories);
+            if (!empty($categoryIds)) {
+                $items->categories()->sync($categoryIds);
             }
             // insert to table charity_project_tags
             if (request()->tags != null) {
