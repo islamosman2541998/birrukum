@@ -72,10 +72,27 @@
                             <div class="page-feature-card h-100">
 
                                 @if ($feature->image)
-                                    <div class="page-feature-image">
-                                        <img src="{{ getImage($feature->image) }}" alt="{{ @$featureTrans->title }}"
-                                            class="img-fluid">
-                                    </div>
+                                    @php
+                                        $extension = strtolower(pathinfo($feature->image, PATHINFO_EXTENSION));
+                                    @endphp
+
+                                    @if ($extension === 'pdf')
+                                        <div class="page-feature-pdf text-center p-4">
+                                            <i class="bx bxs-file-pdf" style="font-size: 55px; color: #dc3545;"></i>
+
+                                            <div class="mt-3">
+                                                <a href="{{ getImage($feature->image) }}" target="_blank"
+                                                    class="btn btn-danger btn-sm">
+                                                    فتح ملف PDF
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="page-feature-image">
+                                            <img src="{{ getImage($feature->image) }}" alt="{{ @$featureTrans->title }}"
+                                                class="img-fluid">
+                                        </div>
+                                    @endif
                                 @endif
 
                                 <div class="page-feature-content">
@@ -194,11 +211,12 @@
         color: #fff;
         opacity: 0.9;
     }
-     .page-extra-content-box {
+
+    .page-extra-content-box {
         background: #fff;
         border-radius: 14px;
         padding: 25px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
         margin-bottom: 20px;
     }
 

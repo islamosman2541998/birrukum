@@ -270,22 +270,34 @@
 
                                             <div class="row">
                                                 <div class="col-md-3 mb-3">
-                                                    <label class="form-label">الصورة الحالية</label>
+                                                    <label class="form-label"> الصورة أو ملف PDF</label>
 
-                                                    @if ($feature->image)
-                                                        <div>
-                                                            <a href="{{ getImage($feature->image) }}" target="_blank">
-                                                                <img src="{{ getImageThumb($feature->image) }}"
-                                                                    style="width:80px">
-                                                            </a>
-                                                        </div>
-                                                    @else
-                                                        <div class="text-muted">لا توجد صورة</div>
-                                                    @endif
+                                                    <a href="{{ getImage($feature->image) }}" target="_blank">
+                                                        @php
+                                                            $extension = strtolower(pathinfo($feature->image, PATHINFO_EXTENSION));
+                                                        @endphp
+
+                                                        @if ($extension === 'pdf')
+                                                            <div class="text-center p-4">
+                                                                <i class="bx bxs-file-pdf"
+                                                                    style="font-size: 55px; color: #dc3545;"></i>
+
+                                                                <div class="mt-3">
+                                                                    <a href="{{ getImage($feature->image) }}"
+                                                                        target="_blank" class="btn btn-danger btn-sm">
+                                                                        فتح ملف PDF
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        @else
+                                                            <img src="{{ getImageThumb($feature->image) }}" alt=""
+                                                                style="width: 100%;">
+                                                        @endif
+                                                    </a>
                                                 </div>
 
                                                 <div class="col-md-4 mb-3">
-                                                    <label class="form-label">تغيير الصورة</label>
+                                                    <label class="form-label">تغيير الصورة أو ملف PDF</label>
                                                     <input type="file" name="features[{{ $featureIndex }}][image]"
                                                         class="form-control">
                                                 </div>
@@ -428,8 +440,11 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">الصورة</label>
-                        <input type="file" name="features[${index}][image]" class="form-control">
+<label class="form-label">الصورة أو ملف PDF</label>
+                       <input type="file"
+       name="features[{{ $featureIndex }}][image]"
+       class="form-control"
+       accept="image/*,.pdf">
                     </div>
 
                     <div class="col-md-6 mb-3">

@@ -297,8 +297,11 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">الصورة</label>
-                        <input type="file" name="features[${index}][image]" class="form-control">
+<label class="form-label">الصورة أو ملف PDF</label>    
+                   <input type="file"
+       name="features[${index}][image]"
+       class="form-control"
+       accept="image/*,.pdf">
                     </div>
 
                     <div class="col-md-6 mb-3">
