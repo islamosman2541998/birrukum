@@ -29,11 +29,11 @@ trait FileHandler
         if (!in_array($extension, $allowedExtensions)) {
             return 'Invalid file type. Please upload an image or PDF.';
         }
-        $imageName = time() . $key . '.' . $extension;
+        $imageName = time() . $key . '_' . uniqid() . '_' . rand(1000, 9999) . '.' . $extension;
         $path = "attachments/" . $path;
         $image = $file->storeAs($path, $imageName, 'public');
 
-        if($image && $this->generateThumbStatus && $extension !== 'pdf'){
+        if ($image && $this->generateThumbStatus && $extension !== 'pdf') {
             $thumbnailPath = $this->createThumbnail($image, $path);
         }
         return $image;
@@ -43,11 +43,12 @@ trait FileHandler
     {
         $image = Image::make(storage_path('app/public/' . $imagepath));
         $thumbnail = $image->resize($this->thumbsize, $this->thumbsize);
-        $thumbspath = $this->thumbspath . $file . '/' ;
+        $thumbspath = $this->thumbspath . $file . '/';
         $thumbnailPath = $thumbspath .  pathinfo($imagepath)['basename'];
         // if (!file_exists(storage_path('app/public/'. $thumbspath), storage_path('app/public/' . $thumbnailPath))) { 
-            @mkdir(storage_path('app/public/'. $thumbspath), 666, true); 
-        // }
+        if (!is_dir(storage_path('app/public/' . $thumbspath))) {
+            mkdir(storage_path('app/public/' . $thumbspath), 0775, true);
+        }        // }
         $thumbnail->save(storage_path('app/public/' . $thumbnailPath));
         return $thumbnailPath;
     }
@@ -55,8 +56,8 @@ trait FileHandler
     public function delete_file($path = '')
     {
         $thumb_path = str_replace("attachments/", $this->thumbspath, $path);
-        if($thumb_path)@Storage::disk('public')->delete($thumb_path);
-        if($path)@Storage::disk('public')->delete($path);
+        if ($thumb_path) @Storage::disk('public')->delete($thumb_path);
+        if ($path) @Storage::disk('public')->delete($path);
     }
     public function delete_dir($path = '')
     {
