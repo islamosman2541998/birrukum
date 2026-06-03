@@ -14,7 +14,7 @@
                 <div class="card-block px-3">
                     <nav>
                         <ol class="breadcrumb ms-5 ms-md-0">
-                            <img src="{{site_path('img/favicon.ico')}}" class="mx-2" alt="">
+                            {{-- <img src="{{site_path('img/favicon.ico')}}" class="mx-2" alt=""> --}}
                             <li class="breadcrumb-item">
                                 <a href="{{ route('site.home') }}"> @lang('Home') </a>
                             </li>
