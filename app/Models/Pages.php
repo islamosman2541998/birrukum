@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\PageFeature;
+use App\Models\PageContent;
 
 
 class Pages extends Model
@@ -22,8 +24,14 @@ class Pages extends Model
     public function trans(){
         return $this->hasMany(PagesTranslation::class,'page_id');
     }
-
-
+public function features()
+{
+    return $this->hasMany(PageFeature::class, 'page_id')->orderBy('sort');
+}
+public function contents()
+{
+    return $this->hasMany(PageContent::class, 'page_id')->orderBy('sort');
+}
     // Scopes ----------------------------
     public function scopeActive($query){
         return $query->where('status', 1);

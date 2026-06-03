@@ -8,14 +8,14 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PageRequest extends FormRequest
 {
-  
+
     public function authorize()
     {
         return true;
     }
 
 
- 
+
     public function rules()
     {
         $req = [];
@@ -27,23 +27,42 @@ class PageRequest extends FormRequest
             $req += [$locale . '.meta_description' => 'nullable'];
             $req += [$locale . '.meta_key' => 'nullable'];
         }
-        $req += ['image' =>'nullable|' . ImageValidate()];
-        $req += ['status' =>'nullable'];
+        $req += ['image' => 'nullable|' . ImageValidate()];
+        $req += ['status' => 'nullable'];
+        $req += ['features' => 'nullable|array'];
+        $req += ['features.*.image' => 'nullable|' . ImageValidate()];
+        $req += ['features.*.id' => 'nullable|exists:page_features,id'];
+        $req += ['features.*.old_image' => 'nullable|string'];
+        $req += ['features.*.url' => 'nullable|string|max:255'];
+        $req += ['features.*.sort' => 'nullable|integer'];
+
+        foreach (config('translatable.locales') as $locale) {
+            $req += ['features.*.' . $locale . '.title' => 'nullable|string|max:255'];
+            $req += ['features.*.' . $locale . '.description' => 'nullable|string'];
+        }
+        $req += ['contents' => 'nullable|array'];
+        $req += ['contents.*.id' => 'nullable|exists:page_contents,id'];
+        $req += ['contents.*.sort' => 'nullable|integer'];
+
+        foreach (config('translatable.locales') as $locale) {
+            $req += ['contents.*.' . $locale . '.title' => 'nullable|string|max:255'];
+            $req += ['contents.*.' . $locale . '.description' => 'nullable|string'];
+        }
         return $req;
     }
 
 
-    public function getSanitized(){
+    public function getSanitized()
+    {
         $data = $this->validated();
-        foreach(config('translatable.locales') as $locale){
+        foreach (config('translatable.locales') as $locale) {
             $data[$locale]['slug'] = slug($data[$locale]['slug']);
         }
         $data['status'] = isset($data['status']) ? true : false;
 
-        if (request()->isMethod('PUT')){
+        if (request()->isMethod('PUT')) {
             $data['updated_by']  = @auth()->user()->id;
-        }
-        else{
+        } else {
             $data['created_by']  = @auth()->user()->id;
         }
         return $data;
