@@ -227,14 +227,12 @@
                             <div class="col-md-12">
                                 <div class="card border">
                                     <div class="card-header d-flex justify-content-between align-items-center">
-                                        <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h5 class="mb-0">مميزات الصفحة</h5>
+                                        <h5 class="mb-0">مميزات الصفحة</h5>
 
-                                            <button type="button" class="btn btn-sm btn-success" id="add-feature">
-                                                <i class="bx bx-plus"></i>
-                                                إضافة ميزة
-                                            </button>
-                                        </div>
+                                        <button type="button" class="btn btn-sm btn-success" id="add-feature">
+                                            <i class="bx bx-plus"></i>
+                                            إضافة ميزة
+                                        </button>
                                     </div>
 
                                     <div class="card-body">
@@ -343,10 +341,10 @@
         });
     </script>
     <script>
-    var contentIndex = 0;
+        var contentIndex = 0;
 
-    function contentTemplate(index) {
-        return `
+        function contentTemplate(index) {
+            return `
             <div class="content-item border rounded p-3 mb-3" data-index="${index}">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h6 class="mb-0">محتوى رقم ${index + 1}</h6>
@@ -381,20 +379,20 @@
                 @endforeach
             </div>
         `;
-    }
+        }
 
-    $(document).on('click', '#add-content', function (e) {
-        e.preventDefault();
+        $(document).on('click', '#add-content', function(e) {
+            e.preventDefault();
 
-        $('#contents-wrapper').append(contentTemplate(contentIndex));
+            $('#contents-wrapper').append(contentTemplate(contentIndex));
 
-        contentIndex++;
-    });
+            contentIndex++;
+        });
 
-    $(document).on('click', '.remove-content', function (e) {
-        e.preventDefault();
+        $(document).on('click', '.remove-content', function(e) {
+            e.preventDefault();
 
-        $(this).closest('.content-item').remove();
-    });
-</script>
+            $(this).closest('.content-item').remove();
+        });
+    </script>
 @endsection
