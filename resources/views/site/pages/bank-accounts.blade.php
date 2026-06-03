@@ -1,8 +1,8 @@
 @extends('site.app')
 
-@section('title', @$page->trans->where('locale', $current_lang)->first()->meta_title)
+{{-- @section('title', @$page->trans->where('locale', $current_lang)->first()->meta_title)
 @section('meta_key', @$page->trans->where('locale', $current_lang)->first()->meta_key)
-@section('meta_description', @$page->trans->where('locale', $current_lang)->first()->meta_description)
+@section('meta_description', @$page->trans->where('locale', $current_lang)->first()->meta_description) --}}
 
 
 @section('content')
