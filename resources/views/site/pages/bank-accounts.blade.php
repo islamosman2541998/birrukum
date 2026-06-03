@@ -22,7 +22,7 @@
                                     @lang('Page')
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <h3>الحسابات البنكية</h3>
+                                    <h5>الحسابات البنكية</h5>
                                 </li>
                             </ol>
                         </nav>
