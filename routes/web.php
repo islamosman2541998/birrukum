@@ -23,6 +23,7 @@ use App\Http\Controllers\Site\Vendor\VendorController;
 use App\Http\Controllers\Site\Vendor\ProductController ;
 use App\Http\Controllers\Data\OldMenusController;
 use App\Http\Controllers\Data\OldPagesController;
+use App\Http\Controllers\Site\BankAccountsController;
 use App\Http\Controllers\Site\CampaignController;
 use App\Http\Controllers\Site\Manager\ManagerAuthController;
 use App\Http\Controllers\Site\Manager\ManagerController;
@@ -58,6 +59,7 @@ Route::group([
 
     // site pages
     Route::get('pages/{id}', [PageController::class, 'show'])->name('page.show'); //page show by id
+    Route::get('bank-accounts', [BankAccountsController::class, 'index'])->name('bank-accounts.index');
     Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us.index'); //contact us page
     // store
     Route::get('store/{slug}', [StoreController::class, 'show'])->name('store.show'); //Store page
