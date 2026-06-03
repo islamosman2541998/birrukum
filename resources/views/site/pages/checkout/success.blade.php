@@ -16,7 +16,7 @@
                     <div class="text">
                         <h1 class="text-main display-1" dir="ltr">@lang('Thank you')</h1>
                         @include('site.layouts.message')
-                        <p class="fs-4"> مع تحيات جمعية بركم الأهلية بمنطقة مكة المكرمة </p>
+                        <p class="fs-4"> مع تحيات جمعية البر الأهلية بمنطقة مكة المكرمة </p>
                         <a  href="{{ route('site.home') }}" class="btn bg-main py-2 my-3 fs-5">
                             @lang('Back to website')
                         </a>
