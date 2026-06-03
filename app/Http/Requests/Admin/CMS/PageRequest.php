@@ -30,7 +30,7 @@ class PageRequest extends FormRequest
         $req += ['image' => 'nullable|' . ImageValidate()];
         $req += ['status' => 'nullable'];
         $req += ['features' => 'nullable|array'];
-        $req += ['features.*.image' => 'nullable|mimes:jpg,jpeg,png,gif,bmp,webp,pdf|max:10240'];
+        $req += ['features.*.image' => 'nullable|mimes:jpg,jpeg,png,gif,bmp,webp,pdf|max:90240'];
         $req += ['features.*.id' => 'nullable|exists:page_features,id'];
         $req += ['features.*.old_image' => 'nullable|string'];
         $req += ['features.*.url' => 'nullable|string|max:255'];
