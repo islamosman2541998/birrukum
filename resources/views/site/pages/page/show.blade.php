@@ -45,9 +45,11 @@
                 <div class="col-md-6">
                     <p>{!! $page->content !!}</p>
                 </div>
-                <div class="col-md-6">
-                    <img src="{{ getImage($page->image) }}" alt=" {{ $page->title }}">
-                </div>
+                @if ($page->image)
+                    <div class="col-md-6">
+                        <img src="{{ getImage($page->image) }}" alt=" {{ $page->title }}">
+                    </div>
+                @endif
             </div>
 
         </div>
