@@ -91,30 +91,30 @@
 
                 {{-- Blog ----------------------------------------------------------- --}}
                 <li>
-                    <a class="has-arrow">
+                    {{-- <a class="has-arrow">
                         <i class='bx bxs-news'></i> @lang('admin.blogs')
-                    </a>
+                    </a> --}}
                     <ul>
                         {{-- Categories --------------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.categories.index') }}">
                                 <i class='bx bx-category'></i>@lang('categories.categories')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End Categories ------------------------------------------------------- --}}
                         {{-- Articles ------------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.articles.index') }}">
                                 <i class='bx bx-table'></i>@lang('articles.articles')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End Articles --------------------------------------------------------- --}}
                         {{-- Tags ----------------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.tag.index') }}">
                                 <i class='bx bxs-purchase-tag-alt'></i>@lang('admin.tags')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End Tags ----------------------------------------------------------- --}}
                     </ul>
                 </li>
@@ -122,40 +122,40 @@
 
                 {{-- Works ----------------------------------------------------------- --}}
                 <li>
-                    <a class="has-arrow">
+                    {{-- <a class="has-arrow">
                         <i class='bx bx-layer-plus'></i> @lang('admin.works')
-                    </a>
+                    </a> --}}
                     <ul>
                         {{-- Portfolio tags ----------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.portfolio-tags.index') }}">
                                 <i class='bx bxs-purchase-tag-alt'></i> @lang('admin.tags')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End Portfolio tags -------------------------------------------------------- --}}
 
                         {{-- Portfolio ----------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.portfolio.index') }}">
                                 <i class='bx bx-images'></i> @lang('portfolio.portfolio')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End Portfolio -------------------------------------------------------- --}}
 
                         {{-- project -------------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.projects.index') }}">
                                 <i class='bx bx-briefcase-alt'></i> @lang('project.project')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End project ---------------------------------------------------------- --}}
 
                         {{-- services ------------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.services.index') }}">
                                 <i class='bx bx-wink-smile'></i> @lang('services.services')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End services --------------------------------------------------------- --}}
                     </ul>
                 </li>
@@ -163,37 +163,37 @@
 
                 {{-- Settings -------------------------------------------------------- --}}
                 <li>
-                    <a class="has-arrow">
+                    {{-- <a class="has-arrow">
                         <i class='bx bx-cog'></i> @lang('admin.settings')
-                    </a>
+                    </a> --}}
                     <ul>
                         {{-- settings --------------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.settings.index') }}">
                                 <i class='bx bx-cog'></i> @lang('settings.system_settings')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End setiings ----------------------------------------------------------- --}}
                         {{-- Themes --------------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.themes.dashboard') }}">
                                 <i class='bx bx-palette'></i> @lang('themes.themes')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End Themes ----------------------------------------------------------- --}}
                         {{-- Payment Method ------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.payment-method.index') }}">
                                 <i class='bx bx-credit-card'></i> @lang('admin.payment_methods')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End Payment Method ----------------------------------------------------------- --}}
                         {{-- Media ----------------------------------------------------------- --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.media.index') }}">
                                 <i class='bx bx-radio-circle'></i>@lang('admin.media')
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- End Media ----------------------------------------------------------- --}}
                     </ul>
                 </li>
@@ -475,7 +475,7 @@
 
         {{-- badal------------------------------------------------ --}}
         <li>
-            <a class="has-arrow" href="javascript:;">
+            {{-- <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16">
                         <path fill="#000"
@@ -484,39 +484,39 @@
                     </svg>
                 </div>
                 <div class="menu-title">@lang('admin.hajj_umrah')</div>
-            </a>
+            </a> --}}
             <ul>
                 {{-- Hajj and Umrah --------------------------------------------------------------- --}}
                 {{-- charity Badal project --------------------------------------------------------------- --}}
-                <li>
+                {{-- <li>
                     <a href="{{ route('admin.badal.projects.index') }}">
                         <i class='bx bx-briefcase-alt'></i> @lang('project.badal_page_project')
                     </a>
-                </li>
+                </li> --}}
                 {{-- End charity Badal project ---------------------------------------------------------- --}}
 
                 {{-- Rites --------------------------------------------------------------- --}}
-                <li>
+                {{-- <li>
                     <a href="{{ route('admin.badal.rites.index') }}">
                         <i class='bx bx-radio-circle'></i>@lang('admin.rites')
                     </a>
-                </li>
+                </li> --}}
                 {{-- substitutes --------------------------------------------------------------- --}}
-                <li>
+                {{-- <li>
                     <a href="{{ route('admin.badal.substitutes.index') }}">
                         <i class='bx bx-radio-circle'></i>@lang('admin.substitutes')
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a href="{{ route('admin.settings.form', 'badal') }}">
                         <i class='bx bx-radio-circle'></i>@lang('admin.badal_setting')
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a href="{{ route('admin.settings.form', 'badalnotfication') }}">
                         <i class='bx bx-radio-circle'></i>@lang('admin.badal_notify_setting')
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
         {{-- End badal ----------------------------------------------------------- --}}

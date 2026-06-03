@@ -187,7 +187,7 @@
                 <div class="copyright col-12 row mt-5 justify-content-between">
                     <h6 class="col-6 text-start text-dark" dir="rtl">هذا الإیصال إلكتروني لا یحتاج إلى ختم أو توقیع</h6>
                     <h6 class="col-6 text-end text-dark"><span> &copy;</span>
-                        جميع الحقوق محفوظة لجمعية بركم الأهلية بمنطقة مكة المكرمة </h6>
+                        جميع الحقوق محفوظة لجمعية البر الأهلية بمنطقة مكة المكرمة </h6>
                 </div>
                 <hr class="y mt-2">
                 <div class=" info col-12 justify-content-center">
