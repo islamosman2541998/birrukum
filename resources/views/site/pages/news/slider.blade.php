@@ -96,7 +96,7 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
 
-    height: 420px; 
+    height: 500px; 
     display: flex;
     flex-direction: column;
 }
