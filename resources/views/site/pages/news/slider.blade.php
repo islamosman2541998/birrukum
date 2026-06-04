@@ -93,66 +93,63 @@
         padding: 10px 5px 55px;
     }
 
-    .news-swiper-card {
-        background: #fff;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-    }
+   .news-swiper-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 
-    .news-swiper-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
-    }
+    height: 360px; /* زوّدنا ارتفاع الكارد */
+    display: flex;
+    flex-direction: column;
+}
 
-    .news-swiper-image {
-        width: 100%;
-        height: 230px;
-        overflow: hidden;
-    }
+.news-swiper-image {
+    width: 100%;
+    height: 200px; /* ارتفاع الصورة */
+    overflow: hidden;
+    flex-shrink: 0;
+}
 
-    .news-swiper-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: all 0.3s ease;
-    }
+.news-swiper-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
-    .news-swiper-card:hover .news-swiper-image img {
-        transform: scale(1.05);
-    }
+.news-swiper-content {
+    padding: 18px 20px;
+    text-align: center;
 
-    .news-swiper-content {
-        padding: 20px;
-        text-align: right;
-    }
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
 
-    .news-swiper-content h4 {
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 1.5;
-        margin-bottom: 12px;
-        min-height: 60px;
-    }
+.news-swiper-content h4 {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.8;
+    margin-bottom: 10px;
 
-    .news-swiper-content h4 a {
-        color: #222;
-        text-decoration: none;
-    }
+    max-height: none;
+    overflow: visible;
+}
 
-    .news-swiper-content h4 a:hover {
-        color: #0d6efd;
-    }
+.news-swiper-content h4 a {
+    color: #222;
+    text-decoration: none;
+}
 
-    .news-swiper-content p {
-        font-size: 15px;
-        line-height: 1.8;
-        color: #666;
-        margin-bottom: 16px;
-        min-height: 80px;
-    }
+.news-swiper-content p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 15px;
+}
 
     .news-swiper-btn {
         display: inline-block;
