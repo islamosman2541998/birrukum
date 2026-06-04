@@ -1,7 +1,7 @@
 <?php
 
 $time = time();
-die('Disable File manager By Ahmed Elmahdy For security reasons');
+// die('Disable File manager By Ahmed Elmahdy For security reasons');
 $config = include 'config/config.php';
 
 if (USE_ACCESS_KEYS == true) {
