@@ -20,7 +20,7 @@ use App\Http\Controllers\Site\ProjectCategoryController;
 use App\Http\Controllers\Site\StoreController;
 use App\Http\Controllers\Site\Vendor\AuthController as VendorAuthController;
 use App\Http\Controllers\Site\Vendor\VendorController;
-use App\Http\Controllers\Site\Vendor\ProductController ;
+use App\Http\Controllers\Site\Vendor\ProductController;
 use App\Http\Controllers\Data\OldMenusController;
 use App\Http\Controllers\Data\OldPagesController;
 use App\Http\Controllers\Site\BankAccountsController;
@@ -33,6 +33,8 @@ use App\Http\Controllers\Site\ReviewOrderController;
 use App\Http\Controllers\Site\TrackingOrderController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\View\Components\Gifts\CardForm;
+use App\Http\Controllers\Site\NewsController;
+
 use App\View\Components\Gifts\CardImg;
 
 // use App\Http\Controllers\Data\CategoryController;
@@ -82,11 +84,15 @@ Route::group([
     Route::Post('checkout', [CheckoutController::class, 'process'])->name('checkout.process');
     Route::get('checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/invoices/{id}', [OrderController::class, 'invoices'])->name('invoices');
-    
+
     Route::get('tracking/{id}', [TrackingOrderController::class, 'trackingOrder'])->name('tracking.order');
     Route::get('evaluation/{id}', [ReviewOrderController::class, 'reviewProduct'])->name('review.order');
     Route::post('evaluation', [ReviewOrderController::class, 'submitReview'])->name('review.save-order');
 
+
+       
+    Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+    Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
     // intial payment
     Route::get('payment-intital', [PaymentController::class, 'payfortIntital'])->name('payments.intital');
@@ -153,8 +159,8 @@ Route::group([
             Route::get('/orders', [VendorController::class, 'orders'])->name('orders.index');
         });
     });
-    
-    
+
+
     // Referer --------------------------------------------------------------------------------------------------
     Route::group(['prefix' => 'referer', 'as' => 'referer.'], function () {
         // Authentication ------------------------------------------
@@ -167,8 +173,8 @@ Route::group([
             Route::get('/orders', [RefererController::class, 'orders'])->name('orders.index');
         });
     });
-    
-    
+
+
     // Manager --------------------------------------------------------------------------------------------------
     Route::group(['prefix' => 'managers', 'as' => 'managers.'], function () {
         // Authentication ------------------------------------------
