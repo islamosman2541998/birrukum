@@ -36,7 +36,7 @@
                     @endif
                     {{-- zakah ------------------------------------ --}}
                     <div class="swiper-slide" data-val="zakah">
-                        <a href="javascript:void(0)" class="swiper-slide-category-item shadow pe-auto bg-danger">
+                        <a href="javascript:void(0)" class="swiper-slide-category-item shadow pe-auto " style="background-color: #d1b67f !important">
                             <div class="swiper-slide-category-item-icon text-center">
                                 <img src="{{asset(site_path('img/category/get-moneyW.png')) }}" alt="zakah-elmal" height="100">
                             </div>
