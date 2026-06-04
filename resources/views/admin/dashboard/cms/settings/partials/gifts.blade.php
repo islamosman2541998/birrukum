@@ -105,7 +105,7 @@
                                                         <div class="modal-dialog modal-xl">
                                                             <div class="modal-content">
                                                                 <div class="pt-0 mt-0 card-body">
-                                                                    <iframe width="100%" height="500" src="{{ asset("admin/filemanager/dialog.php") }}?type=2&field_id=group{{ $key }}&relative_url=1" frameborder="0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>
+                                                                    <iframe width="100%" height="500" src="{{ asset("backend/filemanager/dialog.php") }}?type=2&field_id=group{{ $key }}&relative_url=1" frameborder="0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -185,7 +185,7 @@
                            <div class="modal-dialog modal-xl"> 
                                <div class="modal-content"> 
                                    <div class="pt-0 mt-0 card-body"> 
-                                       <iframe width="100%" height="500" src="{{ asset("admin/filemanager/dialog.php") }}?type=2&field_id=group${count}&relative_url=1" frameborder="0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>
+                                       <iframe width="100%" height="500" src="{{ asset("backend/filemanager/dialog.php") }}?type=2&field_id=group${count}&relative_url=1" frameborder="0" style="overflow: scroll; overflow-x: hidden; overflow-y: scroll; "></iframe>
                                    </div>
                                </div>
                            </div>
