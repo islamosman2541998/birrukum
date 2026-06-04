@@ -16,7 +16,7 @@
                         $partnerTrans = $partner->trans->where('locale', $current_lang)->first();
                     @endphp
 
-                    <div class="swiper-slide">
+                    <div class=" swiper-slide partner-slide">
                         @if($partner->url)
                             <a href="{{ $partner->url }}" target="_blank" class="partner-card">
                                 <img src="{{ getImage($partner->image) }}"
@@ -69,7 +69,9 @@
     text-decoration: none;
     transition: all 0.3s ease;
 }
-
+.partner-slide {
+         height: 150px !important;
+}
 .partner-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
