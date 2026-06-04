@@ -27,7 +27,7 @@
                 </span>
             </ul>
         </div>
-        <div class="project-img" style="height: 250px;">
+        <div class="project-img" >
             <a class="" href="{{ route('site.charity-project.show', $project['slug']) }}" title="">
                 <img class="" src="{{ getImage($project['background_image']) }}" />
             </a>
