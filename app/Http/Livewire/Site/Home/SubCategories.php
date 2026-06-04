@@ -14,87 +14,76 @@ class SubCategories extends Component
 
     public $selectedSubcategory = 0, $SelectedsubcategoriesIDs; 
 
-
     public $projectCarousels = [];
     public $projectsCount;
 
+    public $projectsPerLoad = 6; // عدد المشاريع اللي تظهر أول مرة ومع كل ضغطة المزيد
 
-    /**
-     * update the select section when scroll sections
-     *
-     * @param  int  $id of section
-     */
     public function changeSelection($val)
     {
-        $this->selectedCategory  = $this->firstCategory =  $val;
+        $this->selectedCategory = $this->firstCategory = $val;
         $this->updateSubCategory();
     }
 
-
-    /**
-     * select cataegory
-     *     
-     * @param  int  $carouselIndex get another 
-    */
     public function selectSubcategory($selectedCategory)
     {
-        if($selectedCategory == 0){
+        if ($selectedCategory == 0) {
             $this->selectedSubcategory = 0;
             $this->updateSubCategory(); 
+        } else {
+            $this->SelectedsubcategoriesIDs = [$this->selectedSubcategory = $selectedCategory]; 
         }
-        else{
-            $this->SelectedsubcategoriesIDs = [ $this->selectedSubcategory = $selectedCategory]; 
-        }
+
         $this->projectCarousels = [];
         $this->updateProjects();
     }
 
-
-    /**
-     * select the categories  of selected section
-     */
     public function updateSubCategory()
     {
-        // get the sub category 
-        $this->subcategories =  CategoryProjects::active()->feature() //->normal()->descesd()
-            ->where('parent_id', $this->selectedCategory)->with(['trans' => function ($query) {
+        $this->subcategories = CategoryProjects::active()
+            ->feature()
+            ->where('parent_id', $this->selectedCategory)
+            ->with(['trans' => function ($query) {
                 $query->where('locale', app()->getLocale());
-            }])->get();
-            if ($this->subcategories->count() != 0 ) { //fetch all projects under the main category
-                $this->SelectedsubcategoriesIDs =  $this->subcategories->pluck('id')->toArray();
-            } else {
-                // $this->SelectedsubcategoriesIDs = [$this->selectedSubcategory];
-                $this->SelectedsubcategoriesIDs = [$this->selectedSubcategory == 0 ? $this->firstCategory : $this->selectedSubcategory];
-            }
+            }])
+            ->get();
+
+        if ($this->subcategories->count() != 0) {
+            $this->SelectedsubcategoriesIDs = $this->subcategories->pluck('id')->toArray();
+        } else {
+            $this->SelectedsubcategoriesIDs = [
+                $this->selectedSubcategory == 0 ? $this->firstCategory : $this->selectedSubcategory
+            ];
+        }
+
         $this->projectCarousels = [];
         $this->updateProjects();
     }
 
-     /**
-     * select the categories  of selected section
-     */
     public function updateProjects($carouselIndex = 0)
     {
-        // get Count  of Projects
-        $query = CharityProject::status(1)->featuer(1)->Web()->orderBy('sort','ASC')
-        ->with(['categories', 'trans' => function ($query) {
-            $query->where('locale', app()->getLocale());
-        }])
-        ->whereHas('categories', function($q){
-            $q->whereIn('category_id', $this->SelectedsubcategoriesIDs);
-        });
-        
-        $this->projectsCount = $query->count();
-        // get projectCarousels
-        $this->projectCarousels[$carouselIndex] = $query->offset($carouselIndex * 3)->limit(3)->get()->toArray();
-  
+        $query = CharityProject::status(1)
+            ->featuer(1)
+            ->Web()
+            ->orderBy('sort', 'ASC')
+            ->with(['categories', 'trans' => function ($query) {
+                $query->where('locale', app()->getLocale());
+            }])
+            ->whereHas('categories', function ($q) {
+                $q->whereIn('category_id', $this->SelectedsubcategoriesIDs);
+            });
 
+        $this->projectsCount = $query->count();
+
+        $this->projectCarousels[$carouselIndex] = $query
+            ->offset($carouselIndex * $this->projectsPerLoad)
+            ->limit($this->projectsPerLoad)
+            ->get()
+            ->toArray();
     }
 
-    /**
-     * load another num projets
-    */
-    public function loadProjects(){
+    public function loadProjects()
+    {
         $this->updateProjects(count($this->projectCarousels));
     }
 
@@ -102,7 +91,6 @@ class SubCategories extends Component
     {
         $this->selectedCategory = $this->firstCategory;
         $this->updateSubCategory();
-        // $this->charityProjects = CharityProject::query();
     }
 
     public function render()

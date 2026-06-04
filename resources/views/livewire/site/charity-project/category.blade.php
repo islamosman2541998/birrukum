@@ -19,9 +19,11 @@
         <!-- PROJECT CLUSTERS (end) -->
     </div>
     
-    @if ($projectsCount - (count($projectCarousels) * 3) > 0)
-        <div class="text-center my-4" wire:click="loadProjects">
-            <a class="projects-more text-decoration-none" role="button"> @lang('More') </a>
-        </div>
-    @endif
+   @if ($projectsCount - (count($projectCarousels) * $projectsPerLoad) > 0)
+    <div class="text-center my-2">
+        <a wire:click="loadProjects" class="projects-more text-decoration-none" role="button">
+            @lang('More')
+        </a>
+    </div>
+@endif
 </div>
