@@ -35,7 +35,7 @@
                                             </label>
 
                                             <div class="col-sm-12">
-                                                <input type="text" name="{{ $locale }}[title]" value="{{ old($locale . '.title') }}" class="form-control" required>
+                                                <input type="text" name="{{ $locale }}[title]" value="{{ old($locale . '.title') }}" class="form-control" >
 
                                                 @if ($errors->has($locale . '.title'))
                                                     <span class="missiong-spam">{{ $errors->first($locale . '.title') }}</span>
