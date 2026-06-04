@@ -1,4 +1,4 @@
-<section class="news-slider-section py-5">
+<section class="news-slider-section py-3">
     <div class="container">
 
         <div class="row mb-4">
