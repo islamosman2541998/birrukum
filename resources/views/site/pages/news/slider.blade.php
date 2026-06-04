@@ -86,7 +86,7 @@
     }
 
     .news-swiper {
-        padding: 10px 5px 55px;
+        padding: 10px 5px 112px;
     }
     
 
