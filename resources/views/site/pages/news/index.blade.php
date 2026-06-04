@@ -16,7 +16,7 @@
                                 <a href="{{ route('site.home') }}">@lang('Home')</a>
                             </li>
                             <li class="breadcrumb-item">
-                                @lang('News')
+                               الأخبار
                             </li>
                         </ol>
                     </nav>
