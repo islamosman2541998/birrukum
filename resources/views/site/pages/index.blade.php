@@ -10,6 +10,7 @@
 @livewire('site.home.tabs')
 
 
+@include('site.pages.news.slider', ['items' => $newsItems])
 <!-- Media -->
 <x-site.home.media/>
 

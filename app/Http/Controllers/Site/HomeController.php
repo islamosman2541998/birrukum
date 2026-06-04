@@ -3,24 +3,32 @@
 namespace App\Http\Controllers\Site;
 
 use App\Charity\Settings\SettingSingleton;
-use App\Models\Slider;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\News;
+use App\Models\Slider;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
 
 
 class HomeController extends Controller
 {
     public function index()
     {
-        
+
         $cookieValue = Cookie::get('cart');
-        if(!$cookieValue){
+        if (!$cookieValue) {
             $token = Str::random(32); // Adjust the length as needed
             $cookieValue = Cookie::queue('cart', $token, 60 * 24 * 365);
         }
-        
-        return view('site.pages.index');
+
+        $newsItems = News::query()
+            ->with('trans')
+            ->active()
+            ->orderBy('sort', 'ASC')
+            ->orderBy('id', 'DESC')
+            ->get();
+
+        return view('site.pages.index', compact('newsItems'));
     }
 }

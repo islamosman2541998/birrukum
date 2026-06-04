@@ -33,4 +33,5 @@ class NewsController extends Controller
 
         return view('site.pages.news.show', compact('item'));
     }
+   
 }
