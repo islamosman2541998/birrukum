@@ -274,7 +274,9 @@
 
                                                     <a href="{{ getImage($feature->image) }}" target="_blank">
                                                         @php
-                                                            $extension = strtolower(pathinfo($feature->image, PATHINFO_EXTENSION));
+                                                            $extension = strtolower(
+                                                                pathinfo($feature->image, PATHINFO_EXTENSION),
+                                                            );
                                                         @endphp
 
                                                         @if ($extension === 'pdf')
@@ -290,8 +292,8 @@
                                                                 </div>
                                                             </div>
                                                         @else
-                                                            <img src="{{ getImageThumb($feature->image) }}" alt=""
-                                                                style="width: 100%;">
+                                                            <img src="{{ getImageThumb($feature->image) }}"
+                                                                alt="" style="width: 100%;">
                                                         @endif
                                                     </a>
                                                 </div>
@@ -442,7 +444,7 @@
                     <div class="col-md-6 mb-3">
 <label class="form-label">الصورة أو ملف PDF</label>
                        <input type="file"
-       name="features[{{ $featureIndex }}][image]"
+       name="features[${index}][image]"
        class="form-control"
        accept="image/*,.pdf">
                     </div>
