@@ -80,9 +80,9 @@
     }
 
     .news-slider-title {
-        font-size: 25px;
-        font-weight: 700;
-        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 15px;
     }
 
     .news-swiper {
