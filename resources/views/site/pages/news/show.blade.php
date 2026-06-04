@@ -50,7 +50,7 @@
                         <div class="news-details-image">
                             <img src="{{ getImage($item->image) }}"
                                  alt="{{ @$trans->title }}"
-                                 class="img-fluid">
+                                 class="img-fluid w-100 h-100">
                         </div>
                     @endif
 
