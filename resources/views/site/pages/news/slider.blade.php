@@ -12,7 +12,7 @@
         @if($items->count() > 0)
             <div class="position-relative">
 
-                <div class="swiper news-swiper">
+                <div class="swiper news-swiper news-swiper">
                     <div class="swiper-wrapper">
 
                         @foreach($items as $item)
@@ -86,8 +86,9 @@
     }
 
     .news-swiper {
-        padding: 10px 5px 55px;
+        /* padding: 10px 5px 55px; */
     }
+
 
    .news-swiper-card {
     background: #fff;
