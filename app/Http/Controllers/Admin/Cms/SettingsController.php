@@ -25,7 +25,7 @@ class SettingsController extends Controller
         }
 
         $settings = $settingMain->values;
-        
+
         switch ($key) {
             case 'general':
                 $settings = $settings->pluck('value', 'key');
@@ -126,6 +126,28 @@ class SettingsController extends Controller
 
         // check status
         $request->request->add(['status' => isset($request->status) ? 1 : 0]);
+        // Normalize gift category images to always be JSON array
+        if ($key == 'gift' && $request->has('gift_category') && is_array($request->gift_category)) {
+            $giftCategories = $request->gift_category;
+
+            foreach ($giftCategories as $index => $category) {
+                $images = $category['images'] ?? null;
+
+                if (!empty($images)) {
+                    $decodedImages = json_decode($images, true);
+
+                    if (json_last_error() === JSON_ERROR_NONE && is_array($decodedImages)) {
+                        $giftCategories[$index]['images'] = json_encode($decodedImages, JSON_UNESCAPED_UNICODE);
+                    } else {
+                        $giftCategories[$index]['images'] = json_encode([$images], JSON_UNESCAPED_UNICODE);
+                    }
+                } else {
+                    $giftCategories[$index]['images'] = json_encode([], JSON_UNESCAPED_UNICODE);
+                }
+            }
+
+            $request->request->set('gift_category', $giftCategories);
+        }
 
         // store key in setting
         if ($settingMain == null) {
@@ -166,15 +188,15 @@ class SettingsController extends Controller
         $request->request->add(['status' => isset($request->status) ? 1 : 0]);
 
         $data = $request->except('_token');
-        if(isset($data['achievements'])){
-            foreach($data['achievements'] as $ind => $achievement){
-                if( isset($achievement['image']) && file_exists($achievement['image']) && getimagesize($achievement['image'])) {
+        if (isset($data['achievements'])) {
+            foreach ($data['achievements'] as $ind => $achievement) {
+                if (isset($achievement['image']) && file_exists($achievement['image']) && getimagesize($achievement['image'])) {
                     $data['achievements'][$ind]['image'] = $this->upload_file($achievement['image'], ('settings'), $ind);
                 }
             }
             $data['achievements'] = json_encode($data['achievements']);
         }
-        
+
         // store key in setting
         if ($settingMain == null) {
             $settingMain = Settings::create(['key' => $key]);
