@@ -1,5 +1,3 @@
-
-
 <section class="news-slider-section py-5">
     <div class="container">
 
@@ -9,13 +7,13 @@
             </div>
         </div>
 
-        @if($items->count() > 0)
+        @if ($items->count() > 0)
             <div class="position-relative">
 
                 <div class="swiper news-swiper">
                     <div class="swiper-wrapper">
 
-                        @foreach($items as $item)
+                        @foreach ($items as $item)
                             @php
                                 $trans = $item->trans->where('locale', $current_lang)->first();
                                 $title = @$trans->title;
@@ -28,9 +26,8 @@
 
                                     <div class="news-swiper-image">
                                         <a href="{{ route('site.news.show', $slug) }}">
-                                            <img src="{{ getImage($item->image) }}"
-                                                 alt="{{ $title }}"
-                                                 class="img-fluid">
+                                            <img src="{{ getImage($item->image) }}" alt="{{ $title }}"
+                                                class="img-fluid">
                                         </a>
                                     </div>
 
@@ -86,65 +83,65 @@
     }
 
     .news-swiper {
-        padding: 10px 5px 55px;
+        padding: 10px 5px 112px;
     }
 
-   .news-swiper-card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    .news-swiper-card {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
 
-    display: flex;
-    flex-direction: column;
-}
+        display: flex;
+        flex-direction: column;
+    }
 
-.news-swiper-image {
-    width: 100%;
-    height: 230px; 
-    overflow: hidden;
-    flex-shrink: 0;
-}
+    .news-swiper-image {
+        width: 100%;
+        height: 230px;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
 
-.news-swiper-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+    .news-swiper-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
 
-.news-swiper-content {
-    padding: 18px 20px;
-    text-align: center;
+    .news-swiper-content {
+        padding: 18px 20px;
+        text-align: center;
 
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
 
-.news-swiper-content h4 {
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 1.8;
-    margin-bottom: 10px;
+    .news-swiper-content h4 {
+        font-size: 19px;
+        font-weight: 700;
+        line-height: 1.8;
+        margin-bottom: 10px;
 
-    max-height: none;
-    overflow: visible;
-}
+        max-height: none;
+        overflow: visible;
+    }
 
-.news-swiper-content h4 a {
-    color: #222;
-    text-decoration: none;
-}
+    .news-swiper-content h4 a {
+        color: #222;
+        text-decoration: none;
+    }
 
-.news-swiper-content p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: #666;
-    margin-bottom: 15px;
-}
+    .news-swiper-content p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: #666;
+        margin-bottom: 15px;
+    }
 
     .news-swiper-btn {
         display: inline-block;
@@ -244,7 +241,7 @@
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         new Swiper('.news-swiper', {
             loop: true,
             speed: 700,
@@ -292,4 +289,3 @@
         });
     });
 </script>
-
