@@ -9,6 +9,7 @@ use App\Charity\Carts\DatabaseCart;
 use App\Http\Controllers\Controller;
 use App\Models\Accounts;
 use App\Models\CharityProject;
+use App\Services\GiftCardGenerator;
 use App\Models\Donor;
 use App\Models\Giver;
 use App\Models\LoginTypes;

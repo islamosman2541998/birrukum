@@ -13,15 +13,13 @@ class DatabaseCart implements CartInterface
 {
 
     /**
-     * add item too cart
-     * 
-     * @param Item $item
-     * @param int $quantity
-     * @param float $price
-     * @param string $giftInfo (nullable)
-     * 
-     * @return void
-     */
+ * @param Item $item
+ * @param int $quantity  
+ * @param float $price
+ * @param array|string|null $giftIfo
+ * @param bool $new
+ * @return array
+ */
     public function addItem($item, $quantity = 1, $price = 0, $giftIfo = NULL, $new = false)
     {
         //validate donation price: 
@@ -74,7 +72,7 @@ class DatabaseCart implements CartInterface
                 ]);
             }else{  // update item 
                 $cart->quantity = $cart->quantity + $quantity;
-                $cart->gift_details = $giftIfo ;
+                $cart->gift_details = json_encode($giftIfo); 
                 $cart->save();
             }
 

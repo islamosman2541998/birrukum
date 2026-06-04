@@ -21,6 +21,7 @@ class Show extends Component
     }
 
     public function saveGiftInfo($cart_id){
+        
 
         if(@$this->cardFields[$cart_id]['giver_name'] == "" || @$this->cardFields[$cart_id]['giver_mobile'] == "" ||
             @$this->cardFields[$cart_id]['giver_address'] == ""  ){
