@@ -75,7 +75,7 @@
 
 <style>
     .news-slider-section {
-        background: #f8f9fa;
+        background: #FFFFFF;
         overflow: hidden;
     }
 
