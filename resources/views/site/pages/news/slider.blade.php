@@ -24,7 +24,7 @@
                             @endphp
 
                             <div class="swiper-slide">
-                                <div class="news-swiper-card h-100">
+                                <div class="news-swiper-card ">
 
                                     <div class="news-swiper-image">
                                         <a href="{{ route('site.news.show', $slug) }}">
