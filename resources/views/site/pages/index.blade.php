@@ -11,6 +11,8 @@
 
 
 @include('site.pages.news.slider', ['items' => $newsItems])
+
+@include('site.pages.partners.index', ['partners' => $partners])
 <!-- Media -->
 <x-site.home.media/>
 

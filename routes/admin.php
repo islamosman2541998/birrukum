@@ -51,6 +51,8 @@ use App\Http\Controllers\Admin\Products\AttributesController;
 use App\Http\Controllers\Admin\Products\TagProductController;
 use App\Http\Controllers\Admin\Authorizations\RolesController;
 use App\Http\Controllers\Admin\Badal\OffersController;
+use App\Http\Controllers\Admin\Cms\PartnerController;
+
 use App\Http\Controllers\Admin\Charity\CharityProjectController;
 use App\Http\Controllers\Admin\Charity\VolunteerPagesController;
 use App\Http\Controllers\Admin\Products\AttributesSetController;
@@ -146,7 +148,13 @@ Route::group([
                 Route::post('news/actions', [NewsController::class, 'actions'])->name('news.actions');
                 Route::get('news/update-featured/{id}', [NewsController::class, 'update_featured'])->name('news.update-featured');
                 // ----- End news -------------------------------------------
+                Route::resource('partners', PartnerController::class)->names('partners');
 
+                Route::get('partners/update-status/{id}', [PartnerController::class, 'update_status'])
+                    ->name('partners.update-status');
+
+                Route::post('partners/actions', [PartnerController::class, 'actions'])
+                    ->name('partners.actions');
                 //----------------Start Sliders----------------------------//
                 Route::resource('slider', SliderController::class);
                 Route::get('slider/update-status/{id}', [SliderController::class, 'update_status'])->name('slider.update-status');
