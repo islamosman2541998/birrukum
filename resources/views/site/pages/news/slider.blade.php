@@ -41,10 +41,6 @@
                                             </a>
                                         </h4>
 
-                                        <p>
-                                            {{ \Illuminate\Support\Str::limit($description, 110) }}
-                                        </p>
-
                                         <a href="{{ route('site.news.show', $slug) }}" class="news-swiper-btn">
                                             عرض المزيد
                                         </a>
@@ -84,7 +80,7 @@
     }
 
     .news-slider-title {
-        font-size: 32px;
+        font-size: 25px;
         font-weight: 700;
         margin-bottom: 20px;
     }
@@ -100,14 +96,14 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
 
-    height: 400px; 
+    height: 420px; 
     display: flex;
     flex-direction: column;
 }
 
 .news-swiper-image {
     width: 100%;
-    height: 200px; /* ارتفاع الصورة */
+    height: 230px; 
     overflow: hidden;
     flex-shrink: 0;
 }
