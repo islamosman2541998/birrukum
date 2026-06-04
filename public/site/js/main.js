@@ -4,7 +4,7 @@ $(window).on("load", function () {
   }, 200);
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
   $('.select2').select2();
 });
 
@@ -104,43 +104,60 @@ $(document).keydown(function (e) {
   e.preventDefault();
 });
 // swiper
-var swiper = new Swiper(".categories", {
+// swiper categories
+var categoriesSwiper = new Swiper(".categories", {
   loop: true,
-  // speed: 1000,
   autoHeight: true,
   effect: "coverflow",
 
   grabCursor: false,
-  slidesPerView: 'auto',
+  slidesPerView: "auto",
   slideShadows: true,
- 
-  // autoplay: {
-    // delay: 10,
-  // },
+
   centeredSlides: true,
   slideToClickedSlide: true,
+
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
 
   coverflowEffect: {
     rotate: 0,
     stretch: 0,
     depth: 300,
     modifier: 1,
-   
-    //   slideShadows: true,
   },
+
   breakpoints: {
     320: {
       slidesPerView: 1,
       coverflowEffect: {
         depth: 950,
-      }
+      },
     },
     768: {
       slidesPerView: 2,
     },
     1024: {
-      slidesPerView: 4
-      ,
+      slidesPerView: 4,
+    },
+  },
+
+  on: {
+    slideChange: function () {
+      var boxes = document.querySelectorAll("#categories .boxs .box");
+
+      if (boxes.length > 0) {
+        boxes.forEach(function (box) {
+          box.classList.remove("active");
+        });
+
+        var activeBoxIndex = this.realIndex % boxes.length;
+
+        boxes[activeBoxIndex].classList.add("active");
+      }
     },
   },
 });
@@ -185,35 +202,35 @@ inputs.forEach(function (input) {
   });
 });
 
-window.addEventListener('sliderInit', function(event) {
+window.addEventListener('sliderInit', function (event) {
   console.log("LiveWire Swiper");
   $("#projects .owl-carousel").owlCarousel({
-      margin: 20,
-      nav: true,
-      // loop: true,
-      rtl: true,
-      dots: true,
-      responsiveClass: true,
-      autoplay: false,
-      // autoplayTimeout: 5000,
-      autoplayHoverPause: true,
-      responsive: {
+    margin: 20,
+    nav: true,
+    // loop: true,
+    rtl: true,
+    dots: true,
+    responsiveClass: true,
+    autoplay: false,
+    // autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    responsive: {
       0: {
-          items: 1,
-          dots: true,
-          nav: true,
+        items: 1,
+        dots: true,
+        nav: true,
       },
       700: {
-          items: 2,
-          dots: true,
-          nav: true,
+        items: 2,
+        dots: true,
+        nav: true,
       },
       1000: {
-          items: 3,
-          dots: true,
-          nav: true,
+        items: 3,
+        dots: true,
+        nav: true,
       },
-      },
+    },
   });
 });
 
