@@ -33,13 +33,7 @@
 
             </div>
 
-            <div class="partners-swiper-button-next">
-                <i class="icofont-thin-left"></i>
-            </div>
-
-            <div class="partners-swiper-button-prev">
-                <i class="icofont-thin-right"></i>
-            </div>
+            
         </div>
 
     </div>
