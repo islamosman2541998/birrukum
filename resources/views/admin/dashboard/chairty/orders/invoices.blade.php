@@ -192,8 +192,8 @@
                 <hr class="y mt-2">
                 <div class=" info col-12 justify-content-center">
                     <p class="mx-auto text-center fs-5" dir="rtl">
-                        الإدراة العامة : جدة - حي الروضة - شارع الأمير محمد بن عبدالعزيز(التحلية سابقا)- هاتف 012661722 -0126617111
-                        <br>ص.ب 14488 - جدة 21434 - يمكنك التعرف على مشاريعنا من خلال موقعنا <a href="{{ route('site.home') }}"> namaa.sa </a>
+                       مكة المكرمة - السعودية - حي ولي العهد شارع وادي جيزان 24353
+                        <br>  <a href="{{ route('site.home') }}"> birrukum.com</a>
                     </p>
                 </div>
             </div>

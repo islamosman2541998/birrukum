@@ -109,7 +109,7 @@
 
 
 
-<section class="find-us mt-5 mb-3">
+{{-- <section class="find-us mt-5 mb-3">
     <div class="container">
         <div class="find-us-container" style="visibility: visible;">
             <h2 class="heading--primary heading--border-left find-us__heading">@lang('Location') </h2>
@@ -118,6 +118,6 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 @endsection
