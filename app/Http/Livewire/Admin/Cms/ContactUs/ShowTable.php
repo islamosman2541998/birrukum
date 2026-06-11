@@ -19,13 +19,13 @@ class ShowTable extends Component
 
     public function deleteId($id)
     {
-        $this->emit('updateDeleteId', $id);
+        $this->emitUp('updateDeleteId', $id);
     }
 
     // Nested function ----------------------------------------------
     public function updateSellected($selected)
     {
-        $this->emit('updateSellected', $selected);
+        $this->emitUp('updateSellected', $selected);
     }
 
     public function updatedSelectAll($selectes)
@@ -36,7 +36,7 @@ class ShowTable extends Component
     {
         $this->item->status == 1 ? $this->item->status = 0 : $this->item->status = 1;
         $this->item->save();
-        $this->emit('updateSession',  trans('message.admin.status_changed_sucessfully'));
+        $this->emitUp('updateSession', trans('message.admin.status_changed_sucessfully'));
     }
 
     public function mount($item)

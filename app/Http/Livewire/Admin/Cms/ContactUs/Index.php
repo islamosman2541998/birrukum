@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Admin\Cms\ContactUs;
 
 use Livewire\Component;
-use App\Models\Contactus;
+use App\Models\ContactUs;
 use Livewire\WithPagination;
 
 class Index extends Component
@@ -23,11 +23,27 @@ class Index extends Component
 
 
     // delete selected item -------------------------------------------
-    public function delete()
-    {
-        Contactus::findOrFail($this->deleteId)->delete();
-        session()->flash('success', trans('message.admin.deleted_sucessfully'));
+   public function delete()
+{
+    if (!$this->deleteId) {
+        session()->flash('error', 'لم يتم تحديد العنصر المراد حذفه');
+        return;
     }
+
+    $item = ContactUs::find($this->deleteId);
+
+    if (!$item) {
+        session()->flash('error', 'العنصر غير موجود');
+        return;
+    }
+
+    $item->delete();
+
+    $this->deleteId = '';
+    $this->clearSelect();
+
+    session()->flash('success', trans('message.admin.deleted_sucessfully'));
+}
 
     // Events All Selected ----------------------------------------------
     public function updatedSelectAll($value)
@@ -42,7 +58,7 @@ class Index extends Component
 
     public function publishSelected()
     {
-        $items = Contactus::findMany($this->mySelected);
+        $items = ContactUs::findMany($this->mySelected);
         foreach ($items as $item) {
             $item->update(['status' => 1]);
         }
@@ -53,7 +69,7 @@ class Index extends Component
 
     public function unpublishSelected()
     {
-        $items = Contactus::findMany($this->mySelected);
+        $items = ContactUs::findMany($this->mySelected);
         foreach ($items as $item) {
             $item->update(['status' => 0]);
         }
@@ -64,7 +80,7 @@ class Index extends Component
 
     public function deleteSelected()
     {
-        $items = Contactus::findMany($this->mySelected);
+        $items = ContactUs::findMany($this->mySelected);
         foreach ($items as $item) {
 
             $item->delete();
@@ -102,12 +118,11 @@ class Index extends Component
 
     public function render()
     {
-        $query = Contactus::query()->orderBy('created_at', 'DESC');
-        if ($this->search_name  != '') {
-            $query->where('first_name', 'like', '%' . $this->search_name . '%')
-                ->orWhere('last_name', 'like', '%' . $this->search_name . '%');
-            $this->resetPage();
-        }
+        $query = ContactUs::query()->orderBy('created_at', 'DESC');
+        if ($this->search_name != '') {
+    $query->where('full_name', 'like', '%' . $this->search_name . '%');
+    $this->resetPage();
+}
 
         if ($this->search_email  != '') {
             $query->where('email', 'like', '%' . $this->search_email . '%');
